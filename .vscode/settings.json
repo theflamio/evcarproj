@@ -1,0 +1,13 @@
+{
+    "dataWrangler.outputRenderer.enabledTypes": {
+        "pandas.core.frame.DataFrame": false,
+        "pandas.core.series.Series": false,
+        "polars.dataframe.frame.DataFrame": true,
+        "polars.series.series.Series": true
+    },
+    "dataWrangler.outputRenderer.enabled": true,
+    "dataWrangler.enabledFileTypes": {
+        "jsonl": true
+    },
+    "dataWrangler.defaultViewingFilterOptions": "basic"
+}
