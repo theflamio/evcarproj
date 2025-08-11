@@ -1,0 +1,71 @@
+@startuml
+entity "brands" as brands {
+    *brand_id : INT
+    --
+    brand_name : TEXT
+}
+
+entity "models" as models {
+    *model_id : INT
+    --
+    model_name : TEXT
+    brand_id : INT <<FK>>
+    segment : TEXT
+    car_body_type : TEXT
+}
+
+entity "battery_specs" as battery {
+    *battery_id : INT
+    --
+    capacity_kWh : DOUBLE
+    battery_type : TEXT
+    number_of_cells : INT
+}
+
+entity "performance_specs" as perf {
+    *performance_id : INT
+    --
+    top_speed_kmh : INT
+    torque_nm : INT
+    acceleration_0_100_s : DOUBLE
+    efficiency_wh_per_km : DOUBLE
+    range_km : INT
+}
+
+entity "charging_specs" as charging {
+    *charging_id : INT
+    --
+    fast_charging_power_kw_dc : DOUBLE
+    fast_charge_port : TEXT
+}
+
+entity "dimensions" as dim {
+    *dimension_id : INT
+    --
+    length_mm : INT
+    width_mm : INT
+    height_mm : INT
+    cargo_volume_l : INT
+    towing_capacity_kg : INT
+    seats : INT
+}
+
+entity "electric_vehicles" as ev {
+    *ev_id : INT
+    --
+    model_id : INT <<FK>>
+    battery_id : INT <<FK>>
+    performance_id : INT <<FK>>
+    charging_id : INT <<FK>>
+    dimension_id : INT <<FK>>
+    drivetrain : TEXT
+    source_url : TEXT
+}
+
+brands ||--o{ models
+models ||--o{ ev
+battery ||--o{ ev
+perf ||--o{ ev
+charging ||--o{ ev
+dim ||--o{ ev
+@enduml
